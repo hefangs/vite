@@ -22,22 +22,19 @@ export default {
     }
   },
   methods: {
+    // increment和decrement直接走mutations
     increment() {
-      // this.sum += this.n
-      this.$store.dispatch("increment", this.n)
+      this.$store.commit("INCREMENT", this.n)
     },
     decrement() {
-      this.$store.dispatch("decrement", this.n)
+      this.$store.commit("DECREMENT", this.n)
     },
+    // incrementOdd和incrementWait 需要走actions，再走mutations
     incrementOdd() {
-      if (this.$store.state.sum % 2) {
-        this.$store.dispatch("incrementOdd", this.n)
-      }
+      this.$store.dispatch("incrementOdd", this.n)
     },
     incrementWait() {
-      setTimeout(() => {
-        this.$store.dispatch("increment", this.n)
-      }, 500)
+      this.$store.dispatch("incrementWait", this.n)
     },
   },
   mounted() {
