@@ -20,12 +20,13 @@ export default {
   name: "Count3",
   data() {
     return {
-      n: 1,
+      n: 1
     }
   },
   computed: {
     // 对象写法
-    ...mapState({ sum: "sum", personList: "personList" }),
+    ...mapState("countAbout", { sum: "sum" }),
+    ...mapState("personAbout", { personList: "personList" })
 
     // 数组写法
     // ...mapState(["sum"]),
@@ -39,7 +40,7 @@ export default {
     // },
 
     // 借助mapMutations生成对应的方法，方法中会去调用commit去联系mutation(对象写法)-数组的写法就是key和value一致，放在数组里（这里数组写法略过 ）
-    ...mapMutations({ increment: "INCREMENT", decrement: "DECREMENT" }),
+    ...mapMutations("countAbout", { increment: "INCREMENT", decrement: "DECREMENT" }),
 
     // incrementOdd() {
     //   this.$store.dispatch("incrementOdd", this.n)
@@ -48,13 +49,13 @@ export default {
     //   this.$store.dispatch("incrementWait", this.n)
     // },
     // 借助mapActions生成对应的方法，方法中会去调用dispatch去联系action(对象写法)
-    ...mapActions({ incrementOdd: "incrementOdd", incrementWait: "incrementWait" }),
+    ...mapActions("countAbout", { incrementOdd: "incrementOdd", incrementWait: "incrementWait" })
     // 数组写法：
-    ...mapActions(["incrementOdd", "incrementWait"]),
+    // ...mapActions(["incrementOdd", "incrementWait"])
   },
   mounted() {
     // console.log(this)
-  },
+  }
 }
 </script>
 <style>
