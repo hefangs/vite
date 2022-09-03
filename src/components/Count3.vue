@@ -10,6 +10,7 @@
     <button @click="decrement(n)">-</button>
     <button @click="incrementOdd(n)">当前数字为奇数再加</button>
     <button @click="incrementWait(n)">等500ms再加</button>
+    <h3>personList组件中的总人数是：{{ personList.length }}</h3>
   </div>
 </template>
 <script>
@@ -24,7 +25,7 @@ export default {
   },
   computed: {
     // 对象写法
-    ...mapState({ sum: "sum" }),
+    ...mapState({ sum: "sum", personList: "personList" }),
 
     // 数组写法
     // ...mapState(["sum"]),
